@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="img/favicon-16x16.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Lino | Central do Tipster</title>
+    <style>
+/* Estilo para o contêiner principal */
+#container {
+    background-color: white; /* Fundo branco */
+    max-width: 950px; /* Largura máxima de 950 pixels */
+    width: 100%; /* Largura responsiva de 100% */
+    padding: 20px; /* Adiciona espaçamento interno */
+    border-radius: 5px; /* Bordas arredondadas */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    display: flex; /* Flexbox */
+    flex-direction: column; /* Itens em coluna */
+    align-items: center; /* Centraliza itens horizontalmente */
+}
+
+/* Centraliza o conteúdo dos itens no #bancas */
+#bancas {
+    display: flex;
+    flex-wrap: wrap; /* Permite quebra de linha */
+    justify-content: space-around; /* Distribuição entre itens */
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #fe3b004b;
+    border-radius: 5px;
+    width: 100%;
+}
+
+/* Estilo para todos os inputs */
+input[type="number"], input[type="date"], #stake, #odd, select {
+    width: 95%; /* Largura */
+    max-width: 400px; /* Largura máxima */
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #fe3c00;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Estilo para os botões */
+button {
+    width: 100%; /* Largura total */
+    padding: 15px; /* Padding consistente */
+    margin: 5px 0;
+    background-color: #fe3c00;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #fe3c00; /* Fundo ao passar o mouse */
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95); /* Efeito de clique */
+}
+
+/* Resultados e tabela */
+#result {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fe3b003d;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    font-size: 20px;
+    color: #fff;
+    background-color: #fe3c00;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #bancas {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #bancas div {
+        flex: 1 1 auto;
+        margin: 5px 0;
+    }
+
+    input[type="number"], input[type="text"], input[type="date"], select {
+        width: 95%;
+    }
+}
+/* Para aumentar o texto no celular */
+@media (max-width: 768px) {
+    /* Aumenta o texto no #result */
+    #result h2 {
+        font-size: 24px; /* Aumenta o título */
+    }
+
+    #result p, #result span {
+        font-size: 18px; /* Aumenta o parágrafo e o span */
+    }
+
+    /* Aumenta o texto em Banca Atual */
+    div h2, div p {
+        font-size: 24px; /* Aumenta o título */
+    }
+
+    div p {
+        font-size: 18px; /* Aumenta o parágrafo */
+    }
+}
+
+
+
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-content">
+        <img src="img/logo.png" alt="Logo" class="logo" />
+        <h1>Central do Tipster</h1>
+      </div>
+      <nav>
+        <div class="menu-toggle">Menu</div>
+        <ul class="menu">
+          <li><a href="index.html">Gerador Tip</a></li>
+          <li><a href="relatorio.html">Relatório</a></li>
+          <li><a href="calculadora.html">Calculadora</a></li>
+          <li><a href="gestao.html">Gestão</a></li>
+          <li><a href="https://www.youtube.com/@Mentorlino" target="_blank" rel="noopener">YouTube</a></li>
+          <li><a href="https://t.me/mentorlino" target="_blank" rel="noopener">Telegram</a></li>
+          <li><a href="https://historicosbet.com/" target="_blank" rel="noopener">Históricos Bet</a></li>
+        </ul>
+      </nav>
+    </header>
+  
+
+    <div class="blinking-img-container">
+        <a href="https://historicosbet.com/" target="_blank">
+          <img src="img/banner.jpg" alt="Imagem Exemplo">
+        </a>
+      </div>
+      
+
+  
+  <!--
+  <div class="blinking-img-container">
+    <a href="https://t.me/cashman_fv" target="_blank">
+      <img src="img/banner2.jpg" alt="Imagem Exemplo">
+    </a>
+  </div>
+  -->
+  
+  <div class="container"id="container">
+      <h1>Gestão de Banca</h1>
+  
+      <div id="bancas">
+          <div>
+              <h2>Banca Inicial</h2>
+              <p id="valorInicial">R$ 0.00</p>
+          </div>
+          <div>
+              <h2>Banca Atual</h2>
+              <p id="bancaAtualizada">R$ 0.00</p>
+          </div>
+      </div>
+  
+      <label for="data">Data da operação:</label>
+      <input type="date" id="data" required readonly>
+  
+      <label for="bancaInicial">Valor inicial da banca:</label>
+      <input type="number" id="bancaInicial" step="0.01" required>
+  
+      <div id="operacoes">
+          
+          <label for="stake">Stake:</label>
+          <input type="number" id="stake" step="0.01" required>
+  
+          <label for="odd">Odd:</label>
+          <input type="number" id="odd" step="0.01" required>
+  
+          <label for="resultado">Resultado:</label>
+          <select id="resultado" required>
+              <option value="green">Green</option>
+              <option value="red">Red</option>
+          </select>
+  
+          <button onclick="adicionarOperacao()">Adicionar Operação</button>
+      </div>
+  
+      <div>
+          <button onclick="salvarDados()">Salvar Dados</button>
+          <button onclick="limparHistorico()">Limpar Histórico</button>
+      </div>
+  
+      <label for="dataSelecao">Selecionar Data:</label>
+      <input type="date" id="dataSelecao" onchange="visualizarOperacoes()">
+  
+      <div id="result">
+          <h2>Resultado do Dia</h2>
+          <p>Lucro/Perda do dia: <span id="lucroPerda">0.00</span></p>
+      </div>
+  
+     
+      <table id="tabelaOperacoes">
+          <thead>
+              <tr>
+                  <th>Data</th>
+                  <th>Stake</th>
+                  <th>Odd</th>
+                  <th>Resultado</th>
+              </tr>
+          </thead>
+          <tbody></tbody>
+      </table>
+
+  </div>
+  
+  
+  <script>
+    let bancaAtual = 0;
+    let lucroPerdaTotal = 0;
+    const operacoes = [];
+    const datas = [];
+    const saldos = [];
+    let bancaInicialDefinida = false; // Variável para controlar se a banca inicial foi definida
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Carrega dados do Local Storage
+        carregarDados();
+        
+        // Define a data atual no campo de data
+        const hoje = new Date().toISOString().split('T')[0];
+        document.getElementById('data').value = hoje;
+    });
+
+    document.getElementById('bancaInicial').addEventListener('change', function() {
+        if (!bancaInicialDefinida) { // Apenas define a banca inicial se não estiver definida
+            bancaAtual = parseFloat(this.value);
+            document.getElementById('valorInicial').innerText = `R$ ${bancaAtual.toFixed(2)}`;
+            bancaInicialDefinida = true; // Marca que a banca inicial foi definida
+        }
+    });
+
+    function adicionarOperacao() {
+        const stake = parseFloat(document.getElementById('stake').value);
+        const odd = parseFloat(document.getElementById('odd').value);
+        const resultado = document.getElementById('resultado').value;
+        const data = document.getElementById('data').value;
+
+        let resultadoOperacao;
+        if (resultado === 'green') {
+            resultadoOperacao = (stake * odd) - stake; // Lucro da operação
+            bancaAtual += resultadoOperacao; // Adiciona apenas o lucro à banca
+        } else {
+            resultadoOperacao = -stake; // Perda da operação
+            bancaAtual -= stake; // Subtrai a stake
+        }
+
+        lucroPerdaTotal += resultadoOperacao;
+
+        // Adiciona operação à tabela
+        operacoes.push({ data, stake, odd, resultado, resultadoOperacao });
+        adicionarLinhaTabela(data, stake, odd, resultado);
+
+        // Atualiza resultados do dia
+        atualizarResultados();
+
+        // Atualiza o valor inicial da banca
+        document.getElementById('bancaAtualizada').innerText = `R$ ${bancaAtual.toFixed(2)}`;
+
+        // Salva dados no Local Storage
+        salvarDados();
+
+        // Limpa os campos após a operação
+        document.getElementById('stake').value = '';
+        document.getElementById('odd').value = '';
+        document.getElementById('resultado').value = 'green';
+    }
+
+    function adicionarLinhaTabela(data, stake, odd, resultado) {
+        const tabelaBody = document.getElementById('tabelaOperacoes').querySelector('tbody');
+        const novaLinha = document.createElement('tr');
+
+        novaLinha.innerHTML = `
+            <td>${data}</td>
+            <td>${stake.toFixed(2)}</td>
+            <td>${odd.toFixed(2)}</td>
+            <td>${resultado === 'green' ? '✅' : '❌'}</td>
+        `;
+        tabelaBody.appendChild(novaLinha);
+    }
+
+    function atualizarResultados() {
+        // Pega o último resultado da operação
+        const ultimaOperacao = operacoes[operacoes.length - 1];
+        if (ultimaOperacao) {
+            document.getElementById('lucroPerda').innerText = ultimaOperacao.resultadoOperacao.toFixed(2);
+        }
+        document.getElementById('bancaAtualizada').innerText = `R$ ${bancaAtual.toFixed(2)}`;
+    }
+
+    function salvarDados() {
+        const dados = {
+            bancaInicial: bancaAtual,
+            lucroPerdaTotal: lucroPerdaTotal,
+            operacoes: operacoes,
+            datas: datas,
+            saldos: saldos
+        };
+        localStorage.setItem('dadosApostas', JSON.stringify(dados));
+        
+    }
+
+    function carregarDados() {
+        const dadosSalvos = JSON.parse(localStorage.getItem('dadosApostas'));
+        if (dadosSalvos) {
+            bancaAtual = dadosSalvos.bancaInicial;
+            lucroPerdaTotal = dadosSalvos.lucroPerdaTotal;
+            operacoes.push(...dadosSalvos.operacoes);
+            dadosSalvos.datas.forEach((data, index) => {
+                datas.push(data);
+                saldos.push(dadosSalvos.saldos[index]);
+            });
+
+            document.getElementById('bancaInicial').value = bancaAtual.toFixed(2);
+            document.getElementById('valorInicial').innerText = `R$ ${bancaAtual.toFixed(2)}`;
+            document.getElementById('bancaAtualizada').innerText = `R$ ${bancaAtual.toFixed(2)}`;
+            document.getElementById('lucroPerda').innerText = lucroPerdaTotal.toFixed(2);
+
+            // Preenche a tabela de operações
+            operacoes.forEach(operacao => {
+                adicionarLinhaTabela(operacao.data, operacao.stake, operacao.odd, operacao.resultado);
+            });
+        }
+    }
+
+    function visualizarOperacoes() {
+        const dataSelecionada = document.getElementById('dataSelecao').value;
+        const tabelaBody = document.getElementById('tabelaOperacoes').querySelector('tbody');
+        tabelaBody.innerHTML = ''; // Limpa a tabela
+
+        operacoes.forEach(operacao => {
+            if (operacao.data === dataSelecionada) {
+                adicionarLinhaTabela(operacao.data, operacao.stake, operacao.odd, operacao.resultado);
+            }
+        });
+    }
+
+    function limparHistorico() {
+    if (confirm("Tem certeza que deseja limpar todo o histórico?")) {
+        localStorage.removeItem('dadosApostas'); // Remove os dados salvos no Local Storage
+        bancaAtual = 0; // Reseta a banca atual
+        lucroPerdaTotal = 0; // Reseta o lucro/perda total
+        operacoes.length = 0; // Limpa o array de operações
+        datas.length = 0; // Limpa o array de datas
+        saldos.length = 0; // Limpa o array de saldos
+        document.getElementById('bancaInicial').value = '0.00'; // Reseta o campo de entrada da banca inicial
+        document.getElementById('valorInicial').innerText = 'R$ 0.00'; // Atualiza a exibição da banca inicial
+        document.getElementById('lucroPerda').innerText = '0.00'; // Reseta o lucro/perda exibido
+        document.getElementById('bancaAtualizada').innerText = 'R$ 0.00'; // Reseta a exibição da banca atual
+        document.getElementById('tabelaOperacoes').querySelector('tbody').innerHTML = ''; // Limpa a tabela de operações
+        alert("Histórico limpo com sucesso!"); // Alerta de sucesso
+    }
+}
+// Código do menu toggle
+const menuToggle = document.querySelector('.menu-toggle');
+const menu = document.querySelector('nav ul');
+
+menuToggle.addEventListener('click', () => {
+  menu.classList.toggle('active'); // Adiciona ou remove a classe 'active'
+});
+
+  </script>
+  
+  </body>
+</html>

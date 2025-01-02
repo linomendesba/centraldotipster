@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="img/favicon-16x16.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Lino | Central do Tipster</title>
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+      }
+
+      .moedas-container {
+        display: flex;
+        flex-wrap: wrap; /* Permite que os itens quebrem para a linha seguinte, se necessário */
+        gap: 5px; /* Espaçamento entre os checkboxes */
+        padding: 10px;
+        border: so;
+      }
+
+      label {
+        display: flex; /* Para alinhar checkbox e texto */
+        align-items: center; /* Alinha verticalmente */
+      }
+      #horas-container {
+  display: flex;
+  flex-direction: column; /* Alinha os elementos em coluna */
+  align-items: center; /* Centraliza horizontalmente */
+  margin: 20px 0; /* Margem em cima e embaixo do container */
+}
+
+#selecionar-hora {
+  margin-bottom: 10px; /* Espaçamento embaixo do texto para separar das horas */
+  font-weight: bold; /* Opcional: para deixar o texto em negrito */
+}
+
+#horas {
+  display: flex;
+  flex-wrap: wrap; /* Permite que as horas quebrem para a linha seguinte se necessário */
+  justify-content: center; /* Centraliza horizontalmente as horas dentro do contêiner */
+}
+
+#horas label {
+  margin-right: 15px; /* Espaçamento entre as horas */
+}
+
+
+    </style>
+  </head>
+
+
+  <body>
+    <header>
+      <div class="header-content">
+        <img src="img/logo.png" alt="Logo" class="logo" />
+        <h1>Central do Tipster</h1>
+      </div>
+      <nav>
+        <div class="menu-toggle">Menu</div>
+        <ul class="menu">
+          <li><a href="index.html">Gerador Tip</a></li>
+          <li><a href="relatorio.html">Relatório</a></li>
+          <li><a href="calculadora.html">Calculadora</a></li>
+          <li><a href="gestao.html">Gestão</a></li>
+          <li><a href="aovivo.html">Ao Vivo</a></li>
+          <li><a href="https://www.youtube.com/@Mentorlino" target="_blank" rel="noopener">YouTube</a></li>
+          <li><a href="https://t.me/mentorlino" target="_blank" rel="noopener">Telegram</a></li>
+          <li><a href="https://historicosbet.com/" target="_blank" rel="noopener">Históricos Bet</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <div class="blinking-img-container">
+      <a href="https://historicosbet.com/" target="_blank">
+        <img src="img/banner.jpg" alt="Imagem Exemplo">
+      </a>
+    </div>
+    
+
+<!--
+<div class="blinking-img-container">
+  <a href="https://t.me/cashman_fv" target="_blank">
+    <img src="img/banner2.jpg" alt="Imagem Exemplo">
+  </a>
+</div>
+-->
+    
+    <div class="container">
+      <div class="section">
+        <h2>Selecione a Liga</h2>
+        <div class="button-group">
+          <label
+            ><input type="radio" name="liga" value="EXPRESS" /> EXPRESS</label
+          >
+          <label><input type="radio" name="liga" value="COPA" /> COPA</label>
+          <label><input type="radio" name="liga" value="EURO" /> EURO</label>
+          <label
+            ><input type="radio" name="liga" value="PREMIER" /> PREMIER</label
+          >
+          <label><input type="radio" name="liga" value="SUPER" /> SUPER</label>
+        </div>
+      </div>
+
+<div id="horas-container">
+  <span id="selecionar-hora">Selecione a Hora (opcional):</span>
+  <div id="horas"></div>
+</div>
+
+
+      <div class="section">
+        <h2>Selecione os Minutos</h2>
+        <div id="minutos">
+          <!-- Minutos serão inseridos aqui via JavaScript -->
+        </div>
+      </div>
+
+
+      <div class="section">
+        <h2>Selecione o Mercado Principal</h2>
+        <div class="button-group">
+          <label
+            ><input type="radio" name="mercado" value="Ambas Sim" /> Ambas
+            Sim</label
+          >
+          <label
+            ><input type="radio" name="mercado" value="Ambas Não" /> Ambas
+            Não</label
+          >
+          <label
+            ><input type="radio" name="mercado" value="Casa Vence" /> Casa
+            Vence</label
+          >
+          <label
+            ><input type="radio" name="mercado" value="Fora Vence" /> Fora
+            Vence</label
+          >
+          <label
+            ><input type="radio" name="mercado" value="Over 1.5" /> Over
+            1.5</label
+          >
+          <label
+            ><input type="radio" name="mercado" value="Over 2.5" /> Over
+            2.5</label
+          >
+          <label
+            ><input type="radio" name="mercado" value="Over 3.5" /> Over
+            3.5</label
+          >
+          <label
+            ><input type="radio" name="mercado" value="Over 5+" /> Over
+            5+</label
+          >
+          <label
+            ><input type="radio" name="mercado" value="5+ Time" /> 5+
+            Time</label
+          >
+          <label
+            ><input type="radio" name="mercado" value="Under 1.5" /> Under
+            1.5</label
+          >
+          <label
+            ><input type="radio" name="mercado" value="Under 2.5" /> Under
+            2.5</label
+          >
+          <label
+            ><input type="radio" name="mercado" value="Under 3.5" /> Under
+            3.5</label
+          >
+          <label
+            ><input type="radio" name="mercado" value="Empate" /> Empate</label
+          >
+          <label
+            ><input type="radio" name="mercado" value="Empate HT" /> Empate
+            HT</label
+          >
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Selecione as Moedas</h2>
+        <div class="moedas">
+          <label class="moeda"
+            ><input type="checkbox" name="moeda" value="Ambas Sim" /> Ambas
+            Sim</label
+          >
+          <label class="moeda"
+            ><input type="checkbox" name="moeda" value="Ambas Não" /> Ambas
+            Não</label
+          >
+          <label class="moeda"
+            ><input type="checkbox" name="moeda" value="Under 1.5" /> Under
+            1.5</label
+          >
+          <label class="moeda"
+            ><input type="checkbox" name="moeda" value="Over 2.5" /> Over
+            2.5</label
+          >
+          <label class="moeda"
+            ><input type="checkbox" name="moeda" value="Over 3.5" /> Over
+            3.5</label
+          >
+          <label class="moeda"
+            ><input type="checkbox" name="moeda" value="Over 5+" /> Over
+            5+</label
+          >
+          <label class="moeda"
+            ><input type="checkbox" name="moeda" value="5+ Time" /> 5+
+            Time</label
+          >
+          <label class="moeda"
+            ><input type="checkbox" name="moeda" value="Viradinha" />
+            Viradinha</label
+          >
+          <label class="moeda"
+            ><input type="checkbox" name="moeda" value="1x1" /> 1x1</label
+          >
+          <label class="moeda"
+            ><input type="checkbox" name="moeda" value="1x2" /> 1x2</label
+          >
+          <label class="moeda"
+            ><input type="checkbox" name="moeda" value="2x1" /> 2x1</label
+          >
+          <label class="moeda"
+            ><input type="checkbox" name="moeda" value="2x2" /> 2x2</label
+          >
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Tip Formatada</h2>
+        <div id="output"></div>
+      </div>
+      
+      <div class="section">
+
+        <div class="button-group">
+          <button onclick="carregarTexto()">Carregar Texto</button>
+          <button onclick="copiarTexto()">Copiar</button>
+        </div>
+      </div>
+
+      <div id="moedas">
+        <h2>Selecione Moedas Green</h2>
+        <div class="moedas-container">
+          <label><input type="checkbox" value="Ambas Sim" /> Ambas Sim</label>
+          <label><input type="checkbox" value="Ambas Não" /> Ambas Não</label>
+          <label><input type="checkbox" value="Under 1.5" /> Under 1.5</label>
+          <label><input type="checkbox" value="Over 2.5" /> Over 2.5</label>
+          <label><input type="checkbox" value="Over 3.5" /> Over 3.5</label>
+          <label><input type="checkbox" value="Over 5+" /> Over 5+</label>
+          <label><input type="checkbox" value="5+ Time" /> 5+ Time</label>
+          <label><input type="checkbox" value="Viradinha" /> Viradinha</label>
+          <label><input type="checkbox" value="1x1" /> 1x1</label>
+          <label><input type="checkbox" value="1x2" /> 1x2</label>
+          <label><input type="checkbox" value="2x1" /> 2x1</label>
+          <label><input type="checkbox" value="2x2" /> 2x2</label>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Minuto Green:</h2>
+        <div class="form-group">
+          <input type="text" id="minuto-green" />
+          <h2 class="margin-top" for="quantidade-greens">Greens Seguidos:</h2>
+          <input type="number" id="quantidade-greens" min="0" value="0" class="margin-top">
+          
+        </div>
+        
+
+        <div class="section">
+          <h2>Ações</h2>
+          <div class="button-group">
+            <button onclick="adicionarGreen()">Green</button>
+            <button onclick="adicionarRed()">Red</button>
+            <button onclick="copiarTexto()">Copiar</button>
+            <button onclick="limpar()">Limpar</button>
+          </div>
+        </div>
+
+        <h2>Texto Personalizado:</h2>
+        <div class="form-group">
+          <input
+            type="text"
+            id="texto-personalizado"
+            placeholder="Digite o texto para substituir"
+          />
+        </div>
+
+        <div class="section">
+          <div class="button-group">
+            <button onclick="salvarTexto()">Salvar Texto</button>
+          </div>
+        </div>
+
+        
+      </div>
+    </div>
+
+    <script>
+
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="img/favicon-16x16.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Lino | Central do Tipster</title>
+    <style>
+
+
+.container {
+    max-width: 960px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #fe3c00;
+    text-align: center; /* Centraliza o texto no contêiner */
+}
+
+label {
+    display: block;
+    color: #fe3c00;
+    text-align: center; /* Centraliza o texto dos rótulos */
+}
+
+input {
+    width: 80%;
+    padding: 10px;
+    margin: 50px 0 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #fe3c00;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%; /* Mantenha como 100% para ocupar toda a largura do contêiner */
+    display: block; /* Necessário para aplicar margin auto */
+    margin: 20px auto 0; /* Centraliza o botão e adiciona margem superior */
+}
+
+
+button:hover {
+    background-color: #fe3c00;
+}
+
+      
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-content">
+        <img src="img/logo.png" alt="Logo" class="logo" />
+        <h1>Central do Tipster</h1>
+      </div>
+      <nav>
+        <div class="menu-toggle">Menu</div>
+        <ul class="menu">
+          <li><a href="index.html">Gerador Tip</a></li>
+          <li><a href="relatorio.html">Relatório</a></li>
+          <li><a href="calculadora.html">Calculadora</a></li>
+          <li><a href="gestao.html">Gestão</a></li>
+          <li><a href="https://www.youtube.com/@Mentorlino" target="_blank" rel="noopener">YouTube</a></li>
+          <li><a href="https://t.me/mentorlino" target="_blank" rel="noopener">Telegram</a></li>
+          <li><a href="https://historicosbet.com/" target="_blank" rel="noopener">Históricos Bet</a></li>
+        </ul>
+      </nav>
+    </header>
+  
+
+    <div class="blinking-img-container">
+      <a href="https://historicosbet.com/" target="_blank">
+        <img src="img/banner.jpg" alt="Imagem Exemplo">
+      </a>
+    </div>
+    
+
+
+<!--
+<div class="blinking-img-container">
+  <a href="https://t.me/cashman_fv" target="_blank">
+    <img src="img/banner2.jpg" alt="Imagem Exemplo">
+  </a>
+</div>
+-->
+    
+    <div class="container">
+      <h1>Calculadora de stake</h1>
+      
+      <label for="banca">Valor da Banca:</label>
+      <input type="text" id="banca" placeholder="Digite o valor" onblur="formatarValor(this)" />
+      
+      <label for="percentual">Porcentagem a buscar no dia (%):</label>
+      <input type="number" id="percentual" placeholder="Porcentagem" />
+      
+      <label for="entradas">Número de Entradas:</label>
+      <input type="number" id="entradas" placeholder="Entradas" />
+      
+      <label for="stake">Stake Inicial do Dia:</label>
+      <input type="text" id="stake" placeholder="Stake" disabled />
+      
+      <button id="calcular">Calcular Stake</button>
+
+    </div>
+
+  </div>
+
+  <script>
+
+function formatarValor(input) {
+            let valor = parseFloat(input.value.replace(',', '.')) || 0;
+            input.value = valor.toFixed(2).replace('.', ',');
+        }
+
+        document.getElementById('calcular').onclick = function() {
+            const bancaInicial = parseFloat(document.getElementById('banca').value.replace(',', '.')) || 0;
+            const percentual = parseFloat(document.getElementById('percentual').value) || 0;
+            const entradas = parseInt(document.getElementById('entradas').value) || 1;
+
+            // Calcule o valor buscado
+            const valorBuscado = bancaInicial * (percentual / 100);
+            
+            // Calcula a stake por entrada
+            const stake = valorBuscado / entradas;
+            document.getElementById('stake').value = stake.toFixed(2).replace('.', ',');
+        };
+
+
+// Código do menu toggle
+const menuToggle = document.querySelector('.menu-toggle');
+const menu = document.querySelector('nav ul');
+
+menuToggle.addEventListener('click', () => {
+  menu.classList.toggle('active'); // Adiciona ou remove a classe 'active'
+});
+
+  </script>
+  
+  </body>
+</html>

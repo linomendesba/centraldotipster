@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="img/favicon-16x16.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Lino | Central do Tipster</title>
+    <style>
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 600;
+        color: #fe3c00;
+      }
+      .form-group input[type="text"],
+      .form-group input[type="text"],
+      .form-group input[type="number"] {
+        width: calc(100% - 22px);
+        padding: 10px;
+        margin: auto;
+        border: 1px solid #fe3c00;
+        border-radius: 8px;
+        font-size: 16px;
+        background-color: #fff; /* Define o fundo como branco */
+        color: #fe3c00; /* Define a cor do texto como preto */
+      }
+
+      .historico-item {
+        border-bottom: 1px solid #ccc; /* Linha separadora */
+        padding: 10px 0; /* Espaçamento */
+      }
+
+      .result {
+        margin-top: 20px;
+        padding: 20px;
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px #fe3c00;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      .bonus-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Espaçamento entre as caixas */
+    justify-content: center; /* Centraliza as caixas */
+}
+
+.bonus-box {
+    background: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 15px;
+    flex: 1 1 calc(33% - 10px); /* Ajuste para 3 colunas em telas grandes */
+    margin-bottom: 20px;
+    padding: 15px; /* Padding interno */
+    max-width: 200px; /* Mantém uma largura máxima */
+}
+
+/* Para telas menores (tablets e afins) */
+@media (max-width: 768px) {
+    .bonus-box {
+        flex: 1 1 calc(50% - 10px); /* Ajuste para 2 colunas */
+        max-width: none; /* Permite ocupar mais espaço */
+    }
+}
+
+/* Para telas muito pequenas (celulares) */
+@media (max-width: 480px) {
+    .bonus-box {
+        flex: 1 1 calc(50% - 10px); /* Permite 2 colunas */
+        max-width: none; /* Remove largura máxima */
+    }
+}
+
+
+      .historico {
+        margin-top: 20px;
+        padding: 10px;
+        background: #f9f9f9;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <img src="img/logo.png" alt="Logo" class="logo" />
+        <h1>Central do Tipster</h1>
+      </div>
+      <nav>
+        <div class="menu-toggle">Menu</div>
+        <ul class="menu">
+          <li><a href="index.html">Gerador Tip</a></li>
+          <li><a href="relatorio.html">Relatório</a></li>
+          <li><a href="calculadora.html">Calculadora</a></li>
+          <li><a href="gestao.html">Gestão</a></li>
+          <li><a href="https://www.youtube.com/@Mentorlino" target="_blank" rel="noopener">YouTube</a></li>
+          <li><a href="https://t.me/mentorlino" target="_blank" rel="noopener">Telegram</a></li>
+          <li><a href="https://historicosbet.com/" target="_blank" rel="noopener">Históricos Bet</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="blinking-img-container">
+      <a href="https://historicosbet.com/" target="_blank">
+        <img src="img/banner.jpg" alt="Imagem Exemplo">
+      </a>
+    </div>
+    
+
+
+<!--
+<div class="blinking-img-container">
+  <a href="https://t.me/cashman_fv" target="_blank">
+    <img src="img/banner2.jpg" alt="Imagem Exemplo">
+  </a>
+</div>
+-->
+    <div class="container">
+      <div class="form-group">
+        <label for="nomeRelatorio">📅 Nome do Relatório:</label>
+        <input
+          type="text"
+          id="nomeRelatorio"
+          placeholder="Digite o nome do relatório"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="entradas">Quantidade de Entradas:</label>
+        <input type="number" id="entradas" min="0" />
+      </div>
+
+      <div class="form-group">
+        <label for="greens">Greens:</label>
+        <input type="number" id="greens" min="0" />
+      </div>
+
+      <div class="form-group">
+        <label for="reds">Reds:</label>
+        <input type="number" id="reds" min="0" />
+      </div>
+<h2> Selecione a quantidade dos bônus</h2>
+      <div class="bonus-container">
+        <div class="bonus-box">
+          <label>Ambas Sim:</label>
+          <input type="number" id="ambasSim" min="0" />
+        </div>
+        <div class="bonus-box">
+          <label>Ambas Não:</label>
+          <input type="number" id="ambasNao" min="0" />
+        </div>
+        <div class="bonus-box">
+          <label>Under 1.5:</label>
+          <input type="number" id="under1_5" min="0" />
+        </div>
+        <div class="bonus-box">
+          <label>Over 2.5:</label>
+          <input type="number" id="over2_5" min="0" />
+        </div>
+        <div class="bonus-box">
+          <label>Over 3.5:</label>
+          <input type="number" id="over3_5" min="0" />
+        </div>
+        <div class="bonus-box">
+          <label>Over 5+:</label>
+          <input type="number" id="over5" min="0" />
+        </div>
+        <div class="bonus-box">
+          <label>5+ Time:</label>
+          <input type="number" id="5_time" min="0" />
+        </div>
+        <div class="bonus-box">
+          <label>Viradinha:</label>
+          <input type="number" id="viradinha" min="0" />
+        </div>
+        <div class="bonus-box">
+          <label>1x1:</label>
+          <input type="number" id="1x1" min="0" />
+        </div>
+        <div class="bonus-box">
+          <label>1x2:</label>
+          <input type="number" id="1x2" min="0" />
+        </div>
+        <div class="bonus-box">
+          <label>2x1:</label>
+          <input type="number" id="2x1" min="0" />
+        </div>
+        <div class="bonus-box">
+          <label>2x2:</label>
+          <input type="number" id="2x2" min="0" />
+        </div>
+      </div>
+
+      <div class="button-group">
+        <button onclick="gerarRelatorio()">Gerar Relatório</button>
+        <button onclick="copiarRelatorio()">Copiar Relatório</button>
+        <button onclick="salvarRelatorio()">Salvar Relatório</button>
+        <button onclick="limparHistorico()">Limpar Histórico</button>
+        <button onclick="limparCampos()">Limpar Campos</button>
+
+      </div>
+
+      <div id="resultado" class="result"></div>
+
+      <div class="historico">
+        <h3>Histórico de Relatórios Salvos:</h3>
+        <div id="historicoRelatorios"></div>
+      </div>
+
+    </div>
+
+    <script>
+const menuToggle = document.querySelector('.menu-toggle');
+const menu = document.querySelector('nav ul');
+
+menuToggle.addEventListener('click', () => {
+  menu.classList.toggle('active'); // Adiciona ou remove a classe 'active'
+});
+
+function limparCampos() {
+  document.getElementById("nomeRelatorio").value = "";
+  document.getElementById("entradas").value = "";
+  document.getElementById("greens").value = "";
+  document.getElementById("reds").value = "";
+
+  // Limpar os campos de bônus
+  document.getElementById("ambasSim").value = "";
+  document.getElementById("ambasNao").value = "";
+  document.getElementById("under1_5").value = "";
+  document.getElementById("over2_5").value = "";
+  document.getElementById("over3_5").value = "";
+  document.getElementById("over5").value = "";
+  document.getElementById("5_time").value = "";
+  document.getElementById("viradinha").value = "";
+  document.getElementById("1x1").value = "";
+  document.getElementById("1x2").value = "";
+  document.getElementById("2x1").value = "";
+  document.getElementById("2x2").value = "";
+
+  // Limpar a área de resultado
+  document.getElementById("resultado").innerText = "";
+}
+
+function gerarDataAtual() {
+  const dataAtual = new Date();
+  const dia = String(dataAtual.getDate()).padStart(2, "0");
+  const mes = String(dataAtual.getMonth() + 1).padStart(2, "0");
+  const ano = dataAtual.getFullYear();
+  return `${dia}/${mes}/${ano}`;
+}
+
+function gerarRelatorio() {
+  const nome = document.getElementById("nomeRelatorio").value || "Lino - Relatório";
+  const data = gerarDataAtual();
+  const entradas = document.getElementById("entradas").value;
+  const greens = document.getElementById("greens").value;
+  const reds = document.getElementById("reds").value;
+
+  const bonusData = [
+    { label: "Ambas Sim", value: document.getElementById("ambasSim").value },
+    { label: "Ambas Não", value: document.getElementById("ambasNao").value },
+    { label: "Under 1.5", value: document.getElementById("under1_5").value },
+    { label: "Over 2.5", value: document.getElementById("over2_5").value },
+    { label: "Over 3.5", value: document.getElementById("over3_5").value },
+    { label: "Over 5+", value: document.getElementById("over5").value },
+    { label: "5+ Time", value: document.getElementById("5_time").value },
+    { label: "Viradinha", value: document.getElementById("viradinha").value },
+    { label: "1x1", value: document.getElementById("1x1").value },
+    { label: "1x2", value: document.getElementById("1x2").value },
+    { label: "2x1", value: document.getElementById("2x1").value },
+    { label: "2x2", value: document.getElementById("2x2").value },
+  ];
+
+  let bonusTexto = bonusData
+    .filter((b) => b.value > 0)
+    .map((b) => `${b.label}: ${b.value} ✅`)
+    .join("\n");
+
+  if (bonusTexto === "") {
+    bonusTexto = "Nenhum bônus gerado.";
+  }
+
+  const resultado = `
+👑 ${nome}
+
+📊 Relatório
+📅  ${data}
+🎯 Entradas: ${entradas}
+✅ Greens: ${greens} 
+❌ Reds: ${reds}
+
+💰 Bônus 
+${bonusTexto}
+  `;
+
+  document.getElementById("resultado").innerText = resultado.trim();
+}
+
+function copiarRelatorio() {
+  const resultado = document.getElementById("resultado").innerText;
+  navigator.clipboard.writeText(resultado).catch((err) => {
+    console.error("Erro ao copiar o relatório: ", err);
+  });
+}
+
+function salvarRelatorio() {
+  const resultado = document.getElementById("resultado").innerText;
+  if (resultado) {
+    const historico = JSON.parse(localStorage.getItem("historicoRelatorios")) || [];
+    historico.push(resultado.trim());
+    localStorage.setItem("historicoRelatorios", JSON.stringify(historico));
+    exibirHistorico(); // Atualiza o histórico ao salvar
+  }
+}
+
+function limparHistorico() {
+  localStorage.removeItem("historicoRelatorios");
+  document.getElementById("historicoRelatorios").innerHTML = ""; // Limpa a exibição
+}
+
+function exibirHistorico() {
+  const historico = JSON.parse(localStorage.getItem("historicoRelatorios")) || [];
+  const historicoDiv = document.getElementById("historicoRelatorios");
+  historicoDiv.innerHTML = historico
+    .map((relatorio) => `<div class="historico-item"><pre>${relatorio}</pre></div>`)
+    .join("");
+}
+
+// Carrega o histórico ao iniciar a página
+window.onload = function () {
+  exibirHistorico();  // Exibe o histórico ao carregar a página
+  mostrarBanner();    // Mostra o banner de propaganda
+  setInterval(mostrarBanner, 1800000); // 30 minutos = 1800000 milissegundos
+};
+
+// Função para exibir o banner
+function mostrarBanner() {
+  document.getElementById("banner-propaganda").style.display = "block";
+  document.getElementById("fundo-escuro").style.display = "block";
+}
+
+// Função para fechar o banner
+function fecharBanner() {
+  document.getElementById("banner-propaganda").style.display = "none";
+  document.getElementById("fundo-escuro").style.display = "none";
+}
+
+// Evento para o botão "Fechar"
+document.getElementById("fechar-banner").addEventListener("click", fecharBanner);
+
+    </script>
+  </body>
+</html>
